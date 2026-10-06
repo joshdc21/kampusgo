@@ -26,7 +26,7 @@ class ProfileXmlActivity : ComponentActivity() {
                         etEmail.text.toString().contains("@")
                 btnSave.isEnabled = ok
 
-                val email = R.id.etEmail.toString()
+                val email = etEmail.text.toString()
                 etEmail.error = if (email.isNotEmpty() && !email.contains("@")) {
                     "Email needs @"
                 } else {
