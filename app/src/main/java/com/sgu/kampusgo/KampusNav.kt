@@ -77,17 +77,7 @@ fun KampusApp(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(innerPadding),
         ) {
             composable("events") {
-                var showEmpty by remember { mutableStateOf(false) }
-                Column(Modifier.fillMaxSize()) {
-                    EventList(
-                        events = if (showEmpty) emptyList() else sampleEvents,
-                        onEventClick = { id -> navController.navigate("event/$id") },
-                        modifier = Modifier.weight(1f),
-                    )
-                    Button(onClick = { showEmpty = !showEmpty }) {
-                        Text(if (showEmpty) "Show events" else "Show empty")
-                    }
-                }
+                EventsScreen(onEventClick = { id -> navController.navigate("event/$id") })
             }
             composable(
                 route = "event/{id}",
