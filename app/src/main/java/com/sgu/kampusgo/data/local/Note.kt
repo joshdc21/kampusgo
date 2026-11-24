@@ -1,4 +1,4 @@
-package com.sgu.kampusgo
+package com.sgu.kampusgo.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

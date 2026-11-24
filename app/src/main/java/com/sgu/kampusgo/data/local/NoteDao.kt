@@ -1,4 +1,4 @@
-package com.sgu.kampusgo
+package com.sgu.kampusgo.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete

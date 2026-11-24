@@ -60,4 +60,5 @@ dependencies {
     implementation(libs.androidx.material.icons.core)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }

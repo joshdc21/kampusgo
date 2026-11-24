@@ -1,4 +1,4 @@
-package com.sgu.kampusgo
+package com.sgu.kampusgo.data.local
 
 import android.content.Context
 import androidx.room.Database

@@ -1,12 +1,14 @@
-package com.sgu.kampusgo
+package com.sgu.kampusgo.data.remote
 
 import android.util.Log
+import com.sgu.kampusgo.Event
 import java.io.IOException
 import kotlinx.coroutines.CancellationException
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import com.sgu.kampusgo.data.EventsUiState
 data class EventResponse(
     val events: List<Event>,
 )
@@ -14,14 +16,11 @@ interface EventApi {
     @GET("events.json")
     suspend fun events(): Response<EventResponse>
 }
-sealed interface EventsUiState {
-    data object Loading : EventsUiState
-    data class Success(val events: List<Event>) : EventsUiState
-    data class Error(val message: String) : EventsUiState
-}
+
 object EventApiClient {
     // The board gives the full file address. BASE_URL is that address through the last slash.
-    private const val BASE_URL = "https://raw.githubusercontent.com/joshdc21/kampusgo/main/gradlew"
+    private const val BASE_URL =
+        "https://raw.githubusercontent.com/rangganehemiasgu/kampusgo/main/"
     private val api: EventApi by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -29,6 +28,7 @@ object EventApiClient {
             .build()
             .create(EventApi::class.java)
     }
+
     suspend fun loadEvents(): EventsUiState {
         return try {
             val response = api.events()
